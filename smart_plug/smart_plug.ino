@@ -20,14 +20,16 @@ WiFiClient client;
 // Uncomment the following line to enable serial debug output
 #define ENABLE_DEBUG
 
-///////////WiFi Setup/////////////
+/******************************************************
+ *                  General Setup                     *
+ ******************************************************/
 
-#define MyApiKey "e76e30a3-dfe4-4d53-8513-cde2afffd15b" 
-#define MySSID "ASUS_08_2G" 
-#define MyWifiPassword "eternity_3224" 
+#define API_KEY "e76e30a3-dfe4-4d53-8513-cde2afffd15b" 
+#define WIFI_SSID "ASUS_08_2G" 
+#define WIFI_PASS "eternity_3224" 
 #define LED_PIN LED_BUILTIN  // let library figure out which is LED pin :)
 
-/////////////////////////////////
+/******************************************************/
 
 #define HEARTBEAT_INTERVAL 300000 // 5 Minutes 
 
@@ -142,11 +144,11 @@ void setup() {
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, HIGH);
   
-  WiFiMulti.addAP(MySSID, MyWifiPassword);
+  WiFiMulti.addAP(WIFI_SSID, WIFI_PASS);
 #ifdef ENABLE_DEBUG
   Serial.println();
   Serial.print("Connecting to Wifi: ");
-  Serial.println(MySSID);
+  Serial.println(WIFI_SSID);
 #endif
 
   // Waiting for Wifi connect
@@ -169,7 +171,7 @@ void setup() {
 
   // event handler
   webSocket.onEvent(webSocketEvent);
-  webSocket.setAuthorization("apikey", MyApiKey);
+  webSocket.setAuthorization("apikey", API_KEY);
   
   // try again every 5000ms if connection has failed
   webSocket.setReconnectInterval(5000);   // If you see 'class WebSocketsClient' has no member named 'setReconnectInterval' error update arduinoWebSockets
