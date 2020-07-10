@@ -52,13 +52,11 @@ void turnOn(String deviceId) {
 #endif
 //    digitalWrite(LED_PIN, LOW);
     digitalWrite(TOP_PLUG, HIGH);
-    digitalWrite(BOTTOM_PLUG, HIGH);
   } 
-//  else if (deviceId == "5axxxxxxxxxxxxxxxxxxx") // Device ID of second device
-//  { 
-//    Serial.print("Turn on device id: ");
-//    Serial.println(deviceId);
-//  }
+  else if (deviceId == "5efc2122747fac17bdd524b5") // Device ID of second device
+  { 
+    digitalWrite(BOTTOM_PLUG, HIGH);
+  }
 //  else {
 //    Serial.print("Turn on for unknown device id: ");
 //    Serial.println(deviceId);    
@@ -74,13 +72,11 @@ void turnOff(String deviceId) {
 #endif
 //     digitalWrite(LED_PIN, HIGH);
      digitalWrite(TOP_PLUG, LOW);
-     digitalWrite(BOTTOM_PLUG, LOW);
    }
-//   else if (deviceId == "5axxxxxxxxxxxxxxxxxxx") // Device ID of second device
-//   { 
-//     Serial.print("Turn off Device ID: ");
-//     Serial.println(deviceId);
-//  }
+   else if (deviceId == "5efc2122747fac17bdd524b5") // Device ID of second device
+   { 
+     digitalWrite(BOTTOM_PLUG, LOW);
+  }
 //  else {
 //     Serial.print("Turn off for unknown device id: ");
 //     Serial.println(deviceId);    
@@ -153,7 +149,7 @@ void setup() {
   pinMode(TOP_PLUG, OUTPUT);
   pinMode(BOTTOM_PLUG, OUTPUT);
   digitalWrite(TOP_PLUG, LOW);
-  digitalWrite(BOTTOM_PLUG, OUTPUT);
+  digitalWrite(BOTTOM_PLUG, LOW);
   
   WiFiMulti.addAP(WIFI_SSID, WIFI_PASS);
 #ifdef ENABLE_DEBUG
