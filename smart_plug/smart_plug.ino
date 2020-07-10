@@ -28,6 +28,8 @@ WiFiClient client;
 #define WIFI_SSID "ASUS_08_2G" 
 #define WIFI_PASS "eternity_3224" 
 #define LED_PIN LED_BUILTIN  // let library figure out which is LED pin :)
+#define TOP_PLUG 5  // GPIO 5 of ESP-8266 Pin == D1 of Wemos board
+#define BOTTOM_PLUG 4  // GPIO 4 of ESP-8266 Pin == D2 of Wemos board
 
 /******************************************************/
 
@@ -48,7 +50,9 @@ void turnOn(String deviceId) {
     Serial.print("Turn on device id: ");
     Serial.println(deviceId);
 #endif
-    digitalWrite(LED_PIN, LOW);
+//    digitalWrite(LED_PIN, LOW);
+    digitalWrite(TOP_PLUG, HIGH);
+    digitalWrite(BOTTOM_PLUG, HIGH);
   } 
 //  else if (deviceId == "5axxxxxxxxxxxxxxxxxxx") // Device ID of second device
 //  { 
@@ -68,7 +72,9 @@ void turnOff(String deviceId) {
      Serial.print("Turn off Device ID: ");
      Serial.println(deviceId);
 #endif
-     digitalWrite(LED_PIN, HIGH);
+//     digitalWrite(LED_PIN, HIGH);
+     digitalWrite(TOP_PLUG, LOW);
+     digitalWrite(BOTTOM_PLUG, LOW);
    }
 //   else if (deviceId == "5axxxxxxxxxxxxxxxxxxx") // Device ID of second device
 //   { 
@@ -141,8 +147,13 @@ void webSocketEvent(WStype_t type, uint8_t * payload, size_t length) {
 void setup() {
   Serial.begin(115200);
 
-  pinMode(LED_PIN, OUTPUT);
-  digitalWrite(LED_PIN, HIGH);
+//  pinMode(LED_PIN, OUTPUT);
+//  digitalWrite(LED_PIN, HIGH);
+
+  pinMode(TOP_PLUG, OUTPUT);
+  pinMode(BOTTOM_PLUG, OUTPUT);
+  digitalWrite(TOP_PLUG, LOW);
+  digitalWrite(BOTTOM_PLUG, OUTPUT);
   
   WiFiMulti.addAP(WIFI_SSID, WIFI_PASS);
 #ifdef ENABLE_DEBUG
