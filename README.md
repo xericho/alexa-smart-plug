@@ -31,7 +31,8 @@ Command any Alexa device to control applicances using this DIY smart plug!
 - Scrap parts for the plug
 
 ### Circuit Diagram
-[TODO]
+![Alt text](Circuit Diagram)
+<img src="media/circuit_diagram.svg">
 
 ## References
 - ESP8266 Circuit Diagram: https://www.wemos.cc/en/latest/d1/d1_mini.html
